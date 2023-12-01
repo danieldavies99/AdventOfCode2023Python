@@ -74,5 +74,5 @@ def part_two(lines: list[str]) -> int:
     return sum
 
 # Print solutions
-print("Part One Total: {}".format(part_one(lines)))
+print("Part One total: {}".format(part_one(lines)))
 print("Part Two total: {}".format(part_two(lines)))
