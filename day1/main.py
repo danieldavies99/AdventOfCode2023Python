@@ -75,11 +75,4 @@ def part_two(lines: list[str]) -> int:
 
 # Print solutions
 print("Part One Total: {}".format(part_one(lines)))
-# 54926 too low
-# 55286 too low
 print("Part Two total: {}".format(part_two(lines)))
-
-
-
-# test = replace_string_digits("fiveeight")
-# print(replace_all_string_digits(lines))
