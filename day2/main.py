@@ -17,7 +17,10 @@ class CubeSet:
 class Game:
     id: int
     sets: list[CubeSet]
+
+    # part 2:
     fewest_possible: CubeSet
+    power_value: int
 
 def decode_game(line: str) -> Game:
 
@@ -68,6 +71,7 @@ def calculate_fewest_possible_cubes(games: list[Game]) -> list[Game]:
             if set.blue > min_blue:
                 min_blue = set.blue
         game.fewest_possible = CubeSet(min_red, min_green, min_blue)
+        game.power_value = game.fewest_possible.red * game.fewest_possible.green * game.fewest_possible.blue
     return new_games
 
 # game1 = decode_game(lines[0])
@@ -99,10 +103,26 @@ def sum_ids(games: list[Game]) -> int:
     for game in games:
         sum += game.id
     return sum
+    
+def sum_power_values(games: list[Game]) -> int:
+    sum = 0
+    for game in games:
+        sum += game.power_value
+    return sum
 
 games: list[Game] = decode_all_games(lines)
-possible_games: list[Game] = get_only_possible_games(games, RED_LIMIT, GREEN_LIMIT, BLUE_LIMIT)
-res = sum_ids(possible_games)
-print("solution 1 {}".format(res))
+
+def part_one(games: list[Game]) -> int:
+    possible_games: list[Game] = get_only_possible_games(games, RED_LIMIT, GREEN_LIMIT, BLUE_LIMIT)
+    return sum_ids(possible_games)
+
+
+def part_two(games: list[Game]) -> int:
+    transformed_games = calculate_fewest_possible_cubes(games)
+    return sum_power_values(transformed_games)
+
+print("solution 1 {}".format(part_one(games)))
+print("solution 2 {}".format(part_two(games)))
+
 
 
