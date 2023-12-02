@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import copy
 
 lines = open("input.txt").read().split("\n")
 
@@ -16,6 +17,7 @@ class CubeSet:
 class Game:
     id: int
     sets: list[CubeSet]
+    fewest_possible: CubeSet
 
 def decode_game(line: str) -> Game:
 
@@ -23,7 +25,6 @@ def decode_game(line: str) -> Game:
 
     # get game index
     index_str: str = line.split(":")[0][5:]
-    print(index_str)
     index_int = int(index_str)
     res.id = index_int
 
@@ -52,6 +53,22 @@ def decode_game(line: str) -> Game:
     res.sets = sets
 
     return res
+
+def calculate_fewest_possible_cubes(games: list[Game]) -> list[Game]:
+    new_games = copy.copy(games)
+    for game in new_games:
+        min_red = 0
+        min_green = 0
+        min_blue = 0
+        for set in game.sets:
+            if set.red > min_red:
+                min_red = set.red
+            if set.green > min_green:
+                min_green = set.green
+            if set.blue > min_blue:
+                min_blue = set.blue
+        game.fewest_possible = CubeSet(min_red, min_green, min_blue)
+    return new_games
 
 # game1 = decode_game(lines[0])
 
@@ -87,3 +104,5 @@ games: list[Game] = decode_all_games(lines)
 possible_games: list[Game] = get_only_possible_games(games, RED_LIMIT, GREEN_LIMIT, BLUE_LIMIT)
 res = sum_ids(possible_games)
 print("solution 1 {}".format(res))
+
+
