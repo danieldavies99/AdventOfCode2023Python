@@ -129,9 +129,7 @@ def sum_power_values(games: list[Game]) -> int:
         sum += game.power_value
     return sum
 
-
 # solutions:
-
 def part_one(games: list[Game]) -> int:
     possible_games: list[Game] = get_only_possible_games(games, RED_LIMIT, GREEN_LIMIT, BLUE_LIMIT)
     return sum_ids(possible_games)
