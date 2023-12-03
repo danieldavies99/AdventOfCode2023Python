@@ -50,7 +50,7 @@ def decode_input(lines: list[str]) -> list[list[str]]:
 
 # Check that a position falls within the bounds of the map
 def position_is_in_map(position: Position, map_width: int, map_height: int) -> bool:
-    return position.x >= 0 and position.x < map_width - 1 and position.y >= 0 and position.y < map_height - 1
+    return position.x >= 0 and position.x < map_width and position.y >= 0 and position.y < map_height
 
 # get the character at a given x/y position on the map
 def get_symbol_at_point(position: Position, map: list[list[str]]) -> str:
