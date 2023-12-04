@@ -84,6 +84,7 @@ def process_copies(original_cards: list[Card], copies: list[Card]) -> tuple[bool
 
 # very slow recursive approach, does work but takes over a minute
 # I could definitely optimize this but I can't be bothered
+# my solution had 23 total iterations
 def solve_part_2(cards: list[Card]) -> int:
     has_won_cards = True
     copies = copy.copy(cards)
@@ -92,7 +93,6 @@ def solve_part_2(cards: list[Card]) -> int:
         tracker += 1
         has_won_cards, copies = process_copies(cards, copies)
         print("iteration", tracker)
-        # print(has_won_cards, copies, "\n")
 
     return len(copies)
 
@@ -100,7 +100,6 @@ def solve_part_1(cards: list[Card]) -> int:
     total_value: int = 0
     for card in cards:
         score = get_score_from_num_winner(len(get_winning_numbers(card)))
-        # print("card {}, score {}".format(card.id, score))
         total_value += score
     return total_value
 
