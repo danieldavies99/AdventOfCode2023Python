@@ -45,8 +45,8 @@ def decode_input(input: list[str]) -> list[Hand]:
 
 # returns the count of the highest matches cards
 # returns matching counts
-# 1 1 3 3 3 returns [2, 3]
-# 5 5 5 5 5 returns [2, 3]
+# 1 1 3 3 3 returns [3, 2]
+# 5 5 5 5 5 returns [5]
 # 1 2 3 4 5 returns [1, 1, 1, 1, 1]
 # etc.
 # highest count will always return first
@@ -63,9 +63,9 @@ def get_match_counts(hand: Hand) -> list[int]:
 
 # returns the count of the highest matches cards
 # returns matching counts
-# 1 1 3 3 3 returns [2, 3]
-# 5 5 5 5 5 returns [2, 3]
-# 1 2 3 4 5 returns [1, 1, 1, 1, 1]
+# 1 1 3 3 3 returns [3, 2]
+# 5 5 5 5 J returns [5]
+# 1 2 3 4 J returns [2, 1, 1, 1, 1]
 # etc.
 # highest count will always return first
 # J matches get added to highest match
