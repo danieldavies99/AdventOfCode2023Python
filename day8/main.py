@@ -95,7 +95,7 @@ def solve_part_two(directions: Directions, nodes: list[Node]) -> int:
         if steps_counter % 2500 == 0:
             print("still searching, steps so far: {}".format(steps_counter))
 
-    print("all cyle lengths found at step number: {}, calculating LCM".format(steps_counter))
+    print("all cycle lengths found at step number: {}, calculating LCM".format(steps_counter))
     return find_lcm(cycle_lengths.values())
 
 txt_input = open("input.txt").read()
